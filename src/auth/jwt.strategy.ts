@@ -23,6 +23,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     // 있는 유저인지 확인 후 있다면 유저 객체를 return값을 던져줍니다.
     // return 값은 @UseGuards(AuthGuard())를 이용한 모든 요청의 Request Object에 들어갑니다.
     async validate(payload) {
+        console.log("들어오나?");
+        console.log("payload : ", payload);
+        
+        
         const { username } = payload;
         const user: User = await this.userRepository.findOne({ username });
 
